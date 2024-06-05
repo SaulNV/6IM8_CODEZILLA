@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar FanID</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="container">
+        <div class="validation-box">
+            <div class="checkmark">
+                &#10004;
+            </div>
+            <h1>FanID Validado Exitosamente</h1>
+            <button id="proceedButton">Proceder a Validar el Boleto</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('proceedButton').addEventListener('click', function() {
+            window.location.href = 'validarBoleto.html';
+        });
+    </script>
+</body>
+</html>
