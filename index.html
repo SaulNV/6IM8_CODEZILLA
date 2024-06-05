@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Boleto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="ticket-info">
+                <h2>Información del Boleto</h2>
+                <p><strong>Evento:</strong> Arctic Monkeys Concert</p>
+                <p><strong>Fecha:</strong> 15 de Junio, 2024</p>
+                <p><strong>Hora:</strong> 20:00</p>
+                <p><strong>Número de Boleto:</strong> <span id="numeroBoleto">123456</span></p>
+                <p><strong>FanID:</strong> <span id="fanID">fan123</span></p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="validation-buttons">
+                <button id="botonValidarEvento" onclick="cambiarColor(this)">Validar Evento</button>
+                <button id="botonValidarFecha" onclick="cambiarColor(this)">Validar Fecha y Hora</button>
+                <button id="botonValidarFanID" onclick="cambiarColor(this)">Validar FanID</button>
+                <button id="botonValidarUnicidad" onclick="cambiarColor(this)">Validar Unicidad</button>
+            </div>
+            <button id="botonTerminarValidacion" disabled>Terminar Validación</button>
+        </div>
+    </div>
+    <script>
+        function cambiarColor(boton) {
+            boton.style.backgroundColor = "#2ecc71"; // Verde bonito
+            boton.setAttribute("data-validado", "true");
+            verificarValidacion();
+        }
+
+        function verificarValidacion() {
+            const botones = document.querySelectorAll('.validation-buttons button');
+            const todosValidados = Array.from(botones).every(boton => boton.getAttribute("data-validado") === "true");
+            if (todosValidados) {
+                document.getElementById('botonTerminarValidacion').disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Boleto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="ticket-info">
+                <h2>Información del Boleto</h2>
+                <p><strong>Evento:</strong> Arctic Monkeys Concert</p>
+                <p><strong>Fecha:</strong> 15 de Junio, 2024</p>
+                <p><strong>Hora:</strong> 20:00</p>
+                <p><strong>Número de Boleto:</strong> <span id="numeroBoleto">123456</span></p>
+                <p><strong>FanID:</strong> <span id="fanID">fan123</span></p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="validation-buttons">
+                <button id="botonValidarEvento">Validar Evento</button>
+                <button id="botonValidarFecha">Validar Fecha y Hora</button>
+                <button id="botonValidarFanID">Validar FanID</button>
+                <button id="botonValidarUnicidad">Validar Unicidad</button>
+            </div>
+            <button id="botonTerminarValidacion" disabled>Terminar Validación</button>
+        </div>
+        <div id="mensajeResultado"></div>
+    </div>
+    <script>
+        // Datos simulados del backend
+        const eventoValido = {
+            nombre: "Arctic Monkeys Concert",
+            fecha: "2024-06-15",
+            hora: "20:00",
+            boletos: [
+                { numero: "123456", fanID: "fan123" },
+                { numero: "7891011", fanID: "fan456" },
+                { numero: "12131415", fanID: "fan789" }
+            ]
+        };
+
+        let validaciones = {
+            evento: false,
+            fecha: false,
+            fanID: false,
+            unicidad: false
+        };
+
+        document.getElementById('botonValidarEvento').addEventListener('click', function() {
+            const nombreEvento = "Arctic Monkeys Concert";
+            if (nombreEvento === eventoValido.nombre) {
+                validaciones.evento = true;
+                document.getElementById('botonValidarEvento').style.backgroundColor = "green";
+                checkAllValidations();
+            } else {
+                document.getElementById('botonValidarEvento').style.backgroundColor = "red";
+            }
+        });
+
+        document.getElementById('botonValidarFecha').addEventListener('click', function() {
+            const fechaEvento = new Date(eventoValido.fecha + "T" + eventoValido.hora);
+            const ahora = new Date();
+            if (ahora <= fechaEvento) {
+                validaciones.fecha = true;
+                document.getElementById('botonValidarFecha').style.backgroundColor = "green";
+                checkAllValidations();
+            } else {
+                document.getElementById('botonValidarFecha').style.backgroundColor = "red";
+            }
+        });
+
+        document.getElementById('botonValidarFanID').addEventListener('click', function() {
+            const numeroBoleto = document.getElementById('numeroBoleto').innerText;
+            const fanID = document.getElementById('fanID').innerText;
+            const boleto = eventoValido.boletos.find(b => b.numero === numeroBoleto);
+            if (boleto && boleto.fanID === fanID) {
+                validaciones.fanID = true;
+                document.getElementById('botonValidarFanID').style.backgroundColor = "green";
+                checkAllValidations();
+            } else {
+                document.getElementById('botonValidarFanID').style.backgroundColor = "red";
+            }
+        });
+
+        document.getElementById('botonValidarUnicidad').addEventListener('click', function() {
+            const numeroBoleto = document.getElementById('numeroBoleto').innerText;
+            const boleto = eventoValido.boletos.find(b => b.numero === numeroBoleto);
+            if (boleto) {
+                validaciones.unicidad = true;
+                document.getElementById('botonValidarUnicidad').style.backgroundColor = "green";
+                checkAllValidations();
+            } else {
+                document.getElementById('botonValidarUnicidad').style.backgroundColor = "red";
+            }
+        });
+
+        function checkAllValidations() {
+            const todasValidas = validaciones.evento && validaciones.fecha && validaciones.fanID && validaciones.unicidad;
+            document.getElementById('botonTerminarValidacion').disabled = !todasValidas;
+        }
+    </script>
+</body>
+</html>
