@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de Revisión de Solicitudes de Boletos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success, .failure {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .success {
+            border: 1px solid #28a745;
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .failure {
+            border: 1px solid #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Revisión de Solicitudes de Boletos</h1>
+        <form id="ticketRequestForm">
+            <label for="eventName">Nombre del Evento:</label>
+            <input type="text" id="eventName" name="eventName" required>
+            
+            <label for="requestorName">Nombre del Solicitante:</label>
+            <input type="text" id="requestorName" name="requestorName" required>
+            
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+        <div class="success" id="successMessage">
+            ¡Felicidades! Su solicitud ha sido aceptada. Recibirá instrucciones para completar la compra de los boletos.
+        </div>
+        <div class="failure" id="failureMessage">
+            Lo sentimos, su solicitud no fue aceptada esta vez.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('ticketRequestForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const isWinner = Math.random() > 0.5;
+            
+            if (isWinner) {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('failureMessage').style.display = 'none';
+            } else {
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('failureMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
