@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    overflow: hidden;
+    position: relative;
+}
+
+.validation-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.validation-box h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 20px;
+}
+
+.validation-box .checkmark {
+    font-size: 3em;
+    color: #27ae60;
+    animation: scaleUp 0.5s ease-in-out;
+}
+
+.validation-box button {
+    background-color: #9b59b6;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.validation-box button:hover {
+    background-color: #8e44ad;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .validation-box {
+        padding: 20px 30px;
+    }
+    
+    .validation-box h1 {
+        font-size: 1.2em;
+    }
+
+    .validation-box .checkmark {
+        font-size: 2.5em;
+    }
+
+    .validation-box button {
+        padding: 10px 20px;
+    }
+}

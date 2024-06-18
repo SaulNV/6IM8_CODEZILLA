@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mejorando la Tarjeta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #bdc3c7, #2c3e50);
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .banner {
+            background: url('https://source.unsplash.com/1200x400/?concert') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .banner h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 0.5rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid transparent;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card a {
+            text-decoration: none;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .image {
+            object-fit: cover;
+            width: 100%;
+            height: 250px;
+            background: url('https://source.unsplash.com/500x250/?musician') no-repeat center center;
+            background-size: cover;
+        }
+        .title {
+            color: #111827;
+            font-size: 2rem;
+            line-height: 2.5rem;
+            font-weight: 600;
+        }
+        .desc {
+            margin-top: 1rem;
+            color: #6B7280;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .action {
+            display: inline-flex;
+            margin-top: 1.5rem;
+            color: #ffffff;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 500;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #6B7280;
+            padding: 12px 24px;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .action span {
+            transition: transform 0.3s ease;
+        }
+        .action:hover {
+            background-color: #4B5563;
+            transform: translateY(-2px);
+        }
+        .action:hover span {
+            transform: translateX(4px);
+        }
+        .footer {
+            background-color: #333;
+            color: #f2f2f2;
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <a href="#">Inicio</a>
+        <a href="#">Eventos</a>
+        <a href="#">Solicitud</a>
+        <a href="#">Fan ID</a>
+      
+    </div>
+
+    
+    <div class="banner">
+        <h1>FELICIDADES!!! HAS SIDO ELEGIDO</h1>
+    </div>
+
+   
+    <div class="container">
+        
+        <div class="card">
+            <div class="image"></div>
+            <div class="content">
+                <a href="#">
+                    <span class="title">COMPRA</span>
+                </a>
+                <p class="desc">Has sido seleccionado por el sorteo para el evento que elegiste, favor de confirmar la compra para poder tener el boleto</p>
+                <a class="action" href="#">
+                    Confirmar
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <p>© 2024 Codezilla. Todos los derechos reservados. | Contacto: codezilla@tusitioeventos.com</p>
+        
+    </div>
+</body>
+</html>
